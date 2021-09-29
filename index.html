@@ -4,23 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Document</title>
+    <title>Weather</title>
 </head>
 
 <body class="flex-column min-100-vh">
-    <header class="hero">
+    <header class="hero bg-primary">
         <h1 class="app-title">Weather Dashboard</h1>
 
     </header>
-    <main>
+    <main class="container row justify-space-between">
+
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <h3 class="card-header text-uppercase">Search for Weather</h3>
+                <form id="location-form" class="card-body">
+                  <label class="form-label" for="location">Location</label>
+                  <input name="location" id="location" type="text" autofocus="true" class="form-input" />
+                  <button type="submit" class="btn">Search</button>
+                </form>
+              </div>
+              <div>
+                  <ul class="past-searches">
+
+                  </ul>
+              </div>
+        </div>
+
+        <div class="weather-container col-12 col-md-8 col-lg-8">
+            <h2><span id="weather-search-term"></span></h2>
+            <div class="weather-today col-12 col-md-8 col-lg-8">
+                <ul class="weather-list">
+
+                </ul>
+            </div>
+            <div class="weather-day"></div>
+        </div>
 
     </main>
 
 
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js" defer></script>
 </body>
 
 </html>
