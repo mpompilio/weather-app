@@ -4,6 +4,8 @@ var weatherContainerEl = document.querySelector("#weather-list");
 var weatherSearchTerm = document.querySelector("#weather-search-term");
 var weatherDayDiv = document.querySelector("#weather-day");
 
+var loadData = [];
+
 var getLocationWeather = function (location) {
 
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&cnt=7&APPID=5e742c8ba47b81a48d8489422caebdaf";
@@ -29,10 +31,17 @@ var formSubmitHandler = function (event) {
     if (location) {
         getLocationWeather(location);
         locationInputEl.value = "";
+
     } else {
         alert("Please enter a location");
     }
     console.log(event);
+    console.log(location);
+
+    saveInput();
+
+    
+
 };
 
 var displayToday = function (weather, searchTerm) {
@@ -40,7 +49,7 @@ var displayToday = function (weather, searchTerm) {
     var iconLink = "http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
     var iconSpan = document.createElement("img");
     iconSpan.setAttribute('src', iconLink);
-
+   
 
 
     weatherContainerEl.textContent = "";
@@ -156,5 +165,22 @@ var displayOtherDays = function (weather, searchTerm) {
 
 }
 
+ var loadInput = function() {
+    var loadLocation = localStorage.getItem('locations');
+
+    for (i = 0; i < loadLocation.length; i++) {
+        loadData.push(loadLocation[i]);
+
+    }
+}
+
+
+var saveInput = function() {
+
+    localStorage.setItem('locations', JSON.stringify(loadData));
+}
+
 
 locationFormEl.addEventListener("submit", formSubmitHandler);
+
+loadInput();
