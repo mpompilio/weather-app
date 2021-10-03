@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 .hero {
     padding: 3% 4%;
 }
@@ -13,12 +17,66 @@
     color: white;
 }
 
-.weather-container {
-    padding: 15px;
-    border: 1px solid black;
-
-}
+.weather-container {}
 
 .container {
     padding: 15px;
+}
+
+.weather-list {
+    padding: 15px;
+    ;
+}
+
+.today-data {
+    padding: 15px;
+}
+
+.uv-favorable {
+    padding: 15px;
+    background-color: green;
+    color: white;
+}
+
+.uv-moderate {
+    padding: 15px;
+    background-color: yellow;
+}
+
+.uv-severe {
+    padding: 15px;
+    background-color: red;
+    color: white;
+}
+
+.weather-day {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+
+
+}
+
+.card {
+    display: flex;
+    padding: 15px;
+    justify-content: space-around;
+}
+
+h4 {
+    font-size: 1.00vw;
+}
+
+.other-data {
+    font-size: 0.75vw;
+}
+
+#card-day {
+    width: 200px;
+}
+
+.main-container {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid black;
 }

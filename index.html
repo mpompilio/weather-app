@@ -12,13 +12,13 @@
     <title>Weather</title>
 </head>
 
-<body class="flex-column min-100-vh">
+<body class="flex-column">
     <header class="hero bg-primary">
         <h1 class="app-title">Weather Dashboard</h1>
 
     </header>
-    <main class="container row justify-space-between">
-
+    <main class="container">
+        <div class="row">
         <div class="col-12 col-md-4">
             <div class="card">
                 <h3 class="card-header text-uppercase">Search for Weather</h3>
@@ -35,19 +35,25 @@
               </div>
         </div>
 
-        <div class="weather-container col-12 col-md-8 col-lg-8">
+        <div class="main-container col-12 col-md-8 col-lg-8 justify-space-between">
+            <div class="weather-container col-12 col-md-12 col-lg-12">
             <h2><span id="weather-search-term"></span></h2>
             <div class="weather-today col-12 col-md-8 col-lg-8">
-                <ul class="weather-list">
+                <ul id="weather-list">
 
                 </ul>
             </div>
-            <div class="weather-day"></div>
+           
         </div>
-
+        <div id="weather-day" class="row">
+    
+        </div>
+        
+        </div>
+        </div>
     </main>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> 
     <script src="./assets/js/script.js" defer></script>
 </body>
 
