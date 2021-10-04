@@ -3,9 +3,12 @@ var locationInputEl = document.querySelector("#location");
 var weatherContainerEl = document.querySelector("#weather-list");
 var weatherSearchTerm = document.querySelector("#weather-search-term");
 var weatherDayDiv = document.querySelector("#weather-day");
+var pastSearches = document.querySelector(".past-searches");
 
 var loadData = [];
 
+
+// Fetch the current weather
 var getLocationWeather = function (location) {
 
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&cnt=7&APPID=5e742c8ba47b81a48d8489422caebdaf";
@@ -24,6 +27,8 @@ var getLocationWeather = function (location) {
     });
 }
 
+
+//when the search button is clicked
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var location = locationInputEl.value.trim();
@@ -38,18 +43,45 @@ var formSubmitHandler = function (event) {
     console.log(event);
     console.log(location);
 
-    saveInput();
+    loadData.push(location);
 
-    
+    saveInput();
+    displayInput();
+
+
 
 };
 
+//Displaying the inputs that were typed into the searched bar
+
+var displayInput = function () {
+
+    var saveArr = localStorage.getItem("locations");
+
+    for (var i = 0; i < saveArr.length; i++) {
+
+        var saved = document.createElement("li");
+
+        saveArr = JSON.parse(saveArr);
+        saved.textContent = saveArr[i];
+
+        pastSearches.appendChild(saved);
+    }
+    console.log
+  
+  
+
+
+}
+
+
+//This is displaying the weather for the current day
 var displayToday = function (weather, searchTerm) {
 
     var iconLink = "http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
     var iconSpan = document.createElement("img");
     iconSpan.setAttribute('src', iconLink);
-   
+
 
 
     weatherContainerEl.textContent = "";
@@ -78,7 +110,7 @@ var displayToday = function (weather, searchTerm) {
 
 }
 
-
+//Getting hte Lat and Lon of the city entered, so that I can use it for the forecast API call
 var getLatandLon = function (weather) {
 
     var latVal = weather.coord.lat;
@@ -102,6 +134,8 @@ var getLatandLon = function (weather) {
     });
 }
 
+
+//Displaying other days
 
 var displayOtherDays = function (weather, searchTerm) {
 
@@ -165,8 +199,10 @@ var displayOtherDays = function (weather, searchTerm) {
 
 }
 
- var loadInput = function() {
-    var loadLocation = localStorage.getItem('locations');
+//Loads Data
+var loadInput = function () {
+    var loadLocation = JSON.parse(localStorage.getItem('locations'));
+
 
     for (i = 0; i < loadLocation.length; i++) {
         loadData.push(loadLocation[i]);
@@ -175,7 +211,8 @@ var displayOtherDays = function (weather, searchTerm) {
 }
 
 
-var saveInput = function() {
+//Saves Data
+var saveInput = function () {
 
     localStorage.setItem('locations', JSON.stringify(loadData));
 }
@@ -184,3 +221,4 @@ var saveInput = function() {
 locationFormEl.addEventListener("submit", formSubmitHandler);
 
 loadInput();
+displayInput();
