@@ -80,3 +80,13 @@ h4 {
     padding: 15px;
     border: 1px solid black;
 }
+
+.input-list {
+    list-style: none;
+    border: 1px solid black;
+    padding: 15px 5px 15px 5px;
+}
+
+.past-searches {
+    padding: 15px 0 15px 0;
+}

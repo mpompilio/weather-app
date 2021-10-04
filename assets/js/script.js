@@ -56,18 +56,20 @@ var formSubmitHandler = function (event) {
 
 var displayInput = function () {
 
-    var saveArr = localStorage.getItem("locations");
+    pastSearches.textContent = "";
+
+    var saveArr = JSON.parse(localStorage.getItem("locations"));
 
     for (var i = 0; i < saveArr.length; i++) {
 
         var saved = document.createElement("li");
+        saved.classList = "input-list";
 
-        saveArr = JSON.parse(saveArr);
+
         saved.textContent = saveArr[i];
 
         pastSearches.appendChild(saved);
     }
-    console.log
   
   
 
